@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tip Calculator</h1>
+  <div class="container">
+    <input type="number" id="bill" placeholder="Enter bill amount">
+    <select id="tip">
+      <option value="0.1">10% Tip</option>
+      <option value="0.15">15% Tip</option>
+      <option value="0.2">20% Tip</option>
+    </select>
+    <button onclick="calculateTip()">Calculate</button>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    function calculateTip() {
+      const bill = parseFloat(document.getElementById("bill").value);
+      const tipPercent = parseFloat(document.getElementById("tip").value);
+      if (isNaN(bill) || bill <= 0) {
+        document.getElementById("result").textContent = "Please enter a valid bill amount.";
+        return;
+      }
+      const tip = bill * tipPercent;
+      const total = bill + tip;
+      document.getElementById("result").textContent = 
+        `Tip: ₹${tip.toFixed(2)} | Total: ₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
